@@ -12,7 +12,7 @@ repo = os.getenv('GITHUB_REPO')
 # Get the data from the Github API
 def get_repo_data_and_export(repo):
 
-    auth = Auth(os.getenv('GITHUB_ACCESS_TOKEN'))
+    auth = Auth.Token(os.getenv('GITHUB_ACCESS_TOKEN'))
 
     # Public Web Github
     g = Github(auth=auth)
