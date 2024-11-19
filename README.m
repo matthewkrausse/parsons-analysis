@@ -30,3 +30,5 @@ cells word cloud analysis of issues, commits, users
 cells most modified files
 
 cells most active users
+
+cells most commented issues
