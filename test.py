@@ -2,6 +2,8 @@ from github import Github
 import dotenv
 import os
 
+import pandas as pd
+
 dotenv.load_dotenv()
 
 # Authentication is defined via github.Auth
@@ -90,6 +92,20 @@ for user in users:
         'updated_at': user.updated_at,
     })
 
+
+# convert all the data to a pandas dataframe
+# save the data to a file
+
+issues_df = pd.DataFrame(issues_schema)
+
+commits_df = pd.DataFrame(commits_schema)
+
+users_df = pd.DataFrame(user_schema)
+
+# save the data to a file
+issues_df.to_csv('data/issues.csv')
+commits_df.to_csv('data/commits.csv')
+users_df.to_csv('data/users.csv')
 
 
 # Save the data to a file
