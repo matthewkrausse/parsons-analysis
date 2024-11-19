@@ -12,23 +12,20 @@ repo = os.getenv('GITHUB_REPO')
 # Get the data from the Github API
 def get_repo_data_and_export(repo):
 
+    # Get the Github Access Token
     auth = Auth.Token(os.getenv('GITHUB_ACCESS_TOKEN'))
 
     # Public Web Github
     g = Github(auth=auth)
 
+    # Get the repo
     repo = g.get_repo("move-coop/parsons")
+
+    # Get the issues and commits
     open_issues = list(repo.get_issues(state='all'))
-
-    # downloads = repo.get_downloads()
-
     commits = repo.get_commits()
 
     # Define the data schema for the objects
-
-    # Issue Schema
-
-    print('issues')
 
     issues_schema = []
     for issue in open_issues:
@@ -48,6 +45,9 @@ def get_repo_data_and_export(repo):
             'comments': issue.comments,
         })
 
+    issues_df = pd.DataFrame(issues_schema)
+    issues_df.to_csv('data/issues.csv')
+
     # Commit Schema
 
     commits_schema = []
@@ -62,6 +62,9 @@ def get_repo_data_and_export(repo):
             'deletions': commit.stats.deletions,
         })
 
+    commits_df = pd.DataFrame(commits_schema)
+    commits_df.to_csv('data/commits.csv')
+    
     # User Schema
 
     users = [commit.author for commit in commits if commit.author]
@@ -92,18 +95,7 @@ def get_repo_data_and_export(repo):
             'updated_at': user.updated_at,
         })
 
-    # convert all the data to a pandas dataframe
-    # save the data to a file
-
-    issues_df = pd.DataFrame(issues_schema)
-
-    commits_df = pd.DataFrame(commits_schema)
-
     users_df = pd.DataFrame(user_schema)
-
-    # save the data to a file
-    issues_df.to_csv('data/issues.csv')
-    commits_df.to_csv('data/commits.csv')
     users_df.to_csv('data/users.csv')
 
 
