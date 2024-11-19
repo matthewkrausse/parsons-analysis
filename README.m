@@ -13,6 +13,7 @@ pip install -r requirements.txt
 set the env var of the github repo you want to get the data from
 ```bash
 export GITHUB_REPO=your_repo
+export GITHUB_ACCESS_TOKEN=your_token
 ```
 example 'move-coop/parsons'
 
