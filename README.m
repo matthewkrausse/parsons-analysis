@@ -17,6 +17,11 @@ export GITHUB_ACCESS_TOKEN=your_token
 ```
 example 'move-coop/parsons'
 
+Activat the virtual environment by running the following command:
+```bash
+source env/bin/activate
+```
+
 Run the following command to start the application:
 ```bash
 python get_repo_data.py
