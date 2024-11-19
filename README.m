@@ -1,13 +1,13 @@
 Request your GitHub API token and set it as an environment variable
 
+Create a virtual environment by running the following command:
+```bash
+python3 -m venv env
+```
+
 Run the following command to install the required packages:
 ```bash
 pip install -r requirements.txt
-```
-
-Run the following command to start the application:
-```bash
-python app.py
 ```
 
 set the env var of the github repo you want to get the data from
@@ -16,16 +16,12 @@ export GITHUB_REPO=your_repo
 ```
 example 'move-coop/parsons'
 
-run the code
+Run the following command to start the application:
+```bash
+python get_repo_data.py
+```
 
-get_data() will be run in a jupyter notebook
-
-basic analysis
-
-```python
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
+Use the notebook to do analysis on your repor
 
 cells that are charts of number of issues, users, commits
 
