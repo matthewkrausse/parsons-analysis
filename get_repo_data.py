@@ -57,6 +57,7 @@ def get_repo_data_and_export(repo):
             'id': commit.sha,
             'message': commit.commit.message,
             'author': commit.author.login if commit.author else None,
+            'company': commit.author.company if commit.author else None,
             'files': [file.filename for file in commit.files],
             'additions': commit.stats.additions,
             'deletions': commit.stats.deletions,
